@@ -1,0 +1,21 @@
+package gUI;
+
+import javafx.application.Application;
+import javafx.stage.Stage;
+
+public class GUIMain extends Application {
+	final String STAGE_TITLE = "Drummer r1";
+	
+	public static void main(String[] args) {
+		launch(args);
+	}
+	
+	@Override
+	public void start(Stage primaryStage) {
+		primaryStage.setTitle(STAGE_TITLE);
+		
+		primaryStage.show();
+	}
+
+	
+}

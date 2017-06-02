@@ -1,0 +1,17 @@
+package mainFX;
+
+import audioHandling.*;
+
+public class Driver {
+
+	public static void main(String[] args) {
+		long start = System.currentTimeMillis();
+		
+		
+		
+		
+		long end = System.currentTimeMillis();
+		System.out.println(end - start);
+	}
+
+}
