@@ -1,0 +1,93 @@
+package gUI;
+
+import java.io.File;
+
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.RadioButton;
+import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleGroup;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
+import javafx.stage.FileChooser;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+
+public class LoadWindow {
+	File file;
+	
+	public void load(){
+		Stage window = new Stage();
+		window.initModality(Modality.APPLICATION_MODAL);
+		window.setTitle("Load");
+		
+		//Loading Stuff
+		TextField directory = new TextField();
+		
+		Button load = new Button("Open");
+		load.setOnAction(e_-> {
+			this.file = loadFileWindow();
+			if(this.file != null){
+				directory.setText(this.file.toString());
+			}
+		});
+		
+		ToggleGroup loopChoices = new ToggleGroup();
+		RadioButton whilePressed = new RadioButton("Play Sound While Key is Pressed");
+		whilePressed.setToggleGroup(loopChoices);
+		RadioButton fullPressed = new RadioButton("Play Full Sound on Key Press");
+		fullPressed.setToggleGroup(loopChoices);
+		RadioButton loopPressed = new RadioButton("Loop Toggle");
+		loopPressed.setToggleGroup(loopChoices);
+		
+		
+		HBox loadLayout = new HBox();
+		loadLayout.getChildren().addAll(directory, load);
+		loadLayout.setSpacing(5);
+		
+		
+		//Bottom Buttons
+		Button cancel = new Button("Cancel");
+		cancel.setOnAction(e -> window.close());
+		
+		Button ok = new Button("OK");
+		ok.setOnAction(e ->{
+			window.close();
+		});
+		
+		HBox bottomButtons = new HBox();
+		bottomButtons.setAlignment(Pos.BOTTOM_RIGHT);
+		bottomButtons.setSpacing(5);
+		bottomButtons.getChildren().addAll(ok, cancel);
+	
+		VBox layout = new VBox();
+		layout.setSpacing(5);
+		layout.getChildren().addAll(loadLayout, bottomButtons);
+		
+		
+		
+		Scene scene = new Scene(layout);
+		window.setScene(scene);
+		window.showAndWait();
+		
+	}
+	
+	private File loadFileWindow(){
+		Stage stage = new Stage();
+		FileChooser fileChooser = new FileChooser();
+		fileChooser.setTitle("Choose an Audio File");
+		fileChooser.getExtensionFilters().addAll(
+				new FileChooser.ExtensionFilter("WAV", "*.wav"),
+				new FileChooser.ExtensionFilter("AU", "*.au"),
+				new FileChooser.ExtensionFilter("AIFF", "*.aiff")
+				);
+		File file = fileChooser.showOpenDialog(stage);
+		if(file != null){
+			return file;
+		}
+		return null;
+	}
+	
+	 
+}
