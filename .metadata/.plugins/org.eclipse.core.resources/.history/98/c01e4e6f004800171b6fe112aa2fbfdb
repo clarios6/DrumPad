@@ -1,0 +1,32 @@
+package audio;
+
+import java.io.File;
+import java.io.IOException;
+import java.net.URL;
+
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
+
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+
+
+public class Test {
+	private File soundFile;
+	private AudioInputStream audioIn;
+	private Clip clip;
+	
+	public void print(){
+		MediaPlayer sound = new MediaPlayer(new Media("mission_succ.wav"));
+		sound.play();
+	}
+	
+	//public void print(){
+	//	System.out.println("Works");
+	//}
+	
+	
+}

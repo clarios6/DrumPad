@@ -1,7 +1,0 @@
-package audioHandling;
-
-public class PrintTest {
-	public static void printMsg(String msg){
-		System.out.println(msg);
-	}
-}
